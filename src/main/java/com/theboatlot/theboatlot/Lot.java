@@ -1,8 +1,6 @@
 package com.theboatlot.theboatlot;
 
 
-import sun.jvm.hotspot.memory.Space;
-
 public class Lot {
     private static int NUM_CREATED = 0;
     private int id;
