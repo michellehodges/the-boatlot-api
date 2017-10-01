@@ -6,7 +6,16 @@ import sun.jvm.hotspot.memory.Space;
 public class Lot {
     private static int NUM_CREATED = 0;
     private int id;
-    private Space[] spaces;
+    private Spot[] spots;
+    private String lotName;
+
+    public String getLotName() {
+        return lotName;
+    }
+
+    public void setLotName(String lotName) {
+        this.lotName = lotName;
+    }
 
     public int getId() {
         return id;
@@ -16,12 +25,12 @@ public class Lot {
         this.id = id;
     }
 
-    public Space[] getSpaces() {
-        return spaces;
+    public Spot[] getSpots() {
+        return spots;
     }
 
-    public void setSpaces(Space[] spaces) {
-        this.spaces = spaces;
+    public void setSpots(Spot[] spots) {
+        this.spots = spots;
     }
 
     /**
@@ -29,10 +38,11 @@ public class Lot {
      * to a random amount.
      * @return
      */
-    public static Lot createLot() {
+    public static Lot createLot(String nameTheLot) {
         Lot l = new Lot();
         l.setId(NUM_CREATED++);
-        l.setSpaces(new Space[(int)(Math.random() * 50)]);
+        l.setSpots(new Spot[(int)(20)]);
+        l.setLotName(nameTheLot);
 
         return l;
     }
