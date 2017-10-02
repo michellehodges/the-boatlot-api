@@ -45,4 +45,10 @@ public class Transaction {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public static Transaction createTransaction(Boat boat, LocalDateTime checkedInDate, LocalDateTime checkedOutDate, double price) {
+        Transaction t = new Transaction(boat, checkedInDate, checkedOutDate, price);
+
+        return t;
+    }
 }

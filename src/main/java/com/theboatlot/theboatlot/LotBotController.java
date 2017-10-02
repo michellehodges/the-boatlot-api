@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @RestController
@@ -22,33 +23,30 @@ public class LotBotController {
     @CrossOrigin
     @GetMapping(value = "lots/{id}")
     public Lot getLotStatus(@PathVariable("id") int id) {
-        //Get a list of the status of all spots in the specified lot,
-        //including the license plate # of anyone parked.
+        //Get a list of the status of all spots in the specified lot, including the license plate # of anyone parked.
         return lots.get(id);
     }
-//
-//    @CrossOrigin
-//    @PostMapping(value = "/lots/{id}")
-//    public Lot parkNewBoat(@PathVariable("id") int id, @RequestBody Boat boat) {
-//        //Park a new car in the specified lot. Must send the Car object
-//        //in the request body.
-//
-//    }
+
+    @CrossOrigin
+    @PostMapping(value = "/lots/{id}")
+    public void parkNewBoat(@PathVariable("id") int id, @RequestBody int spot, @RequestBody String boat) {
+        //Park a new car in the specified lot. Must send the Car object in the request body.
+        lots.get(id).getSpots()[spot].setBoat(Boat.createBoat(boat));
+    }
 //
 //    @CrossOrigin
 //    @PutMapping(value = "/lots/{id}/{spot}")
 //    public int unparkBoatAndReturnMoneys() {
-//        //Open up the specified spot and return the total owed. PUT a null Boat Object
-//        //in replacement
+//        //Open up the specified spot and return the total owed. PUT a null Boat Object in replacement
 //    }
 //
-//    @CrossOrigin
-//    @GetMapping(value = "/transactions")
-//    public Transaction returnAllTransactions(){
-//        //transactions
-//        //Return a list of all transactions, along with the
-//        //bill and license plate number of the charged vehicle.
-//    }
+    @CrossOrigin
+    @GetMapping(value = "/transactions")
+    public List<Transaction> returnAllTransactions(){
+        //Return a list of all transactions, along with the bill and license plate number of the charged vehicle.
+
+        return transactions;
+    }
 
     @PostConstruct
     public void postConstruct() {
@@ -78,6 +76,15 @@ public class LotBotController {
         lots.get(3).getSpots()[19].setBoat(Boat.createBoat("NJI-7532"));
         lots.get(3).getSpots()[17].setBoat(Boat.createBoat("PAL-5698"));
 
-        //TODO: third, add transactions in transaction list
+        //third, add transactions in transaction list
+        Boat boat1 = new Boat("PAL-5698");
+        Boat boat2 = new Boat("WPQ-7456");
+        Boat boat3 = new Boat("AKS-2828");
+        Boat boat4 = new Boat("QKS-9514");
+
+        transactions.add(Transaction.createTransaction(boat1, LocalDateTime.now(), LocalDateTime.now(), 10.99));
+        transactions.add(Transaction.createTransaction(boat2, LocalDateTime.now(), LocalDateTime.now(), 6.65));
+        transactions.add(Transaction.createTransaction(boat3, LocalDateTime.now(), LocalDateTime.now(), 3.78));
+        transactions.add(Transaction.createTransaction(boat4, LocalDateTime.now(), LocalDateTime.now(), 12.23));
     }
 }
