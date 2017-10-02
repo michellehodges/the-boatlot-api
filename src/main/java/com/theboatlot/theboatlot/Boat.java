@@ -14,4 +14,10 @@ public class Boat {
     public void setLicenseNumber(String licenseNumber) {
         this.licenseNumber = licenseNumber;
     }
+
+    public static Boat createBoat(String enterLicense) {
+        Boat b = new Boat(enterLicense);
+
+        return b;
+    }
 }

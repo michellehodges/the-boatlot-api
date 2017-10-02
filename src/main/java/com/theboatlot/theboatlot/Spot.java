@@ -9,6 +9,10 @@ public class Spot {
         this.boat = boat;
     }
 
+    public Spot() {
+        this.boat =  null;
+    }
+
     public Boat getBoat() {
         return boat;
     }

@@ -1,6 +1,8 @@
 package com.theboatlot.theboatlot;
 
 
+import java.util.Arrays;
+
 public class Lot {
     private static int NUM_CREATED = 0;
     private int id;
@@ -40,6 +42,11 @@ public class Lot {
         Lot l = new Lot();
         l.setId(NUM_CREATED++);
         l.setSpots(new Spot[(int)(20)]);
+
+        for (int i = 0; i < l.getSpots().length; i++) {
+            l.getSpots()[i] = new Spot();
+        }
+
         l.setLotName(nameTheLot);
 
         return l;
