@@ -5,14 +5,15 @@ public class Transaction {
     private Boat boat;
     private LocalDateTime checkedInDate;
     private LocalDateTime checkedOutDate;
-    private double price;
+    private double totalCost;
 
-    public Transaction(Boat boat, LocalDateTime checkedInDate, LocalDateTime checkedOutDate, double price) {
+
+    public Transaction(Boat boat, LocalDateTime checkedInDate, double totalCost) {
         this.boat = boat;
         this.checkedInDate = checkedInDate;
-        this.checkedOutDate = checkedOutDate;
-        this.price = price;
+        this.totalCost = totalCost;
     }
+
 
     public Boat getBoat() {
         return boat;
@@ -38,16 +39,16 @@ public class Transaction {
         this.checkedOutDate = checkedOutDate;
     }
 
-    public double getPrice() {
-        return price;
+    public double getTotalCost() {
+        return totalCost;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
     }
 
-    public static Transaction createTransaction(Boat boat, LocalDateTime checkedInDate, LocalDateTime checkedOutDate, double price) {
-        Transaction t = new Transaction(boat, checkedInDate, checkedOutDate, price);
+    public static Transaction createTransaction(Boat boat, LocalDateTime checkedInDate, double totalCost) {
+        Transaction t = new Transaction(boat, checkedInDate, totalCost);
 
         return t;
     }

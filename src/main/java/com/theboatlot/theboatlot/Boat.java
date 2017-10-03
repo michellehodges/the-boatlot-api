@@ -7,6 +7,10 @@ public class Boat {
         this.licenseNumber = licenseNumber;
     }
 
+    public Boat() {
+
+    }
+
     public String getLicenseNumber() {
         return licenseNumber;
     }

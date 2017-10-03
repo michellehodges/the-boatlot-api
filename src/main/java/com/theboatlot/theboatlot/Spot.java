@@ -3,21 +3,21 @@ package com.theboatlot.theboatlot;
 import java.time.LocalDateTime;
 
 public class Spot {
-    private Boat boat;
+    private Transaction transaction;
 
-    public Spot(Boat boat) {
-        this.boat = boat;
+    public Spot(Transaction transaction) {
+        this.transaction = transaction;
     }
 
     public Spot() {
-        this.boat =  null;
+
     }
 
-    public Boat getBoat() {
-        return boat;
+    public Transaction getTransaction() {
+        return transaction;
     }
 
-    public void setBoat(Boat boat) {
-        this.boat = boat;
+    public void setTransaction(Transaction transaction) {
+        this.transaction = transaction;
     }
 }
